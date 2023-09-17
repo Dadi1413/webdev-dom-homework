@@ -54,7 +54,7 @@
 	containerPreloader.textContent = `Идет загрузка комментария...`;
 
 	const fetchAndRendetTasks = () => {
-		return fetch("https://wedev-api.sky.pro/api/v1/elnur-kakhramanov/comments", {
+		return fetch("https://wedev-api.sky.pro/api/v1/hamz-talhigov/comments", {
 			method: "GET"
 		})
 
@@ -115,7 +115,7 @@
 			return `<li class="comment" data-index='${index}'>
 						<div class="comment-header">
 							<div>${comment.name}</div>
-							<div>${comment.date}</div>
+							<div>${comment.date.toLocaleDateString()} ${comment.date.toLocaleTimeString()}</div>
 						</div>
 						<div class="comment-body">
 						${comment.isEdit ? `<textarea class='add-form-text comment-edit-text'>${comment.text}</textarea>` : `<div class="comment-text" style="white-space:pre-line">
@@ -181,7 +181,7 @@
 		const addTodo = () => {
 			containerPreloader.textContent = 'Добавляется комментарий...';
 			
-			return fetch("https://wedev-api.sky.pro/api/v1/elnur-kakhramanov/comments", {
+			return fetch("https://wedev-api.sky.pro/api/v1/hamz-talhigov/comments", {
 				method: "POST",
 				body: JSON.stringify({
 					text: nameTextAreaElement.value.replaceAll("&", "&amp;")
@@ -205,7 +205,7 @@
 					return response.json();
 				})
 				.then((responseData) => {
-					return fetchAndRenderTasks();
+					return fetchAndRendetTasks();
 				})
 				.then((data) => {
 					containerPreloaderPost.textContent = '';
